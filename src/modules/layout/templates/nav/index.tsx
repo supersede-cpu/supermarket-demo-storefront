@@ -6,52 +6,70 @@ import LocalizedClientLink from "@modules/common/components/localized-client-lin
 import CartButton from "@modules/layout/components/cart-button"
 import SideMenu from "@modules/layout/components/side-menu"
 
+const navLinks = [
+  { href: "/store", label: "Trgovina" },
+  { href: "/about", label: "O nama" },
+  { href: "/events", label: "Događaji" },
+  { href: "/affiliate", label: "Suradnja" },
+]
+
 export default async function Nav() {
   const regions = await listRegions().then((regions: StoreRegion[]) => regions)
 
   return (
     <div className="sticky top-0 inset-x-0 z-50 group">
-      <header className="relative h-16 mx-auto border-b duration-200 bg-white border-ui-border-base">
-        <nav className="content-container txt-xsmall-plus text-ui-fg-subtle flex items-center justify-between w-full h-full text-small-regular">
-          <div className="flex-1 basis-0 h-full flex items-center">
-            <div className="h-full">
-              <SideMenu regions={regions} />
-            </div>
-          </div>
-
-          <div className="flex items-center h-full">
+      <header className="relative h-20 mx-auto border-b duration-200 bg-white/95 backdrop-blur-sm border-light-border">
+        <nav className="content-container text-dark-bg flex items-center justify-between w-full h-full">
+          {/* Logo */}
+          <div className="flex items-center">
             <LocalizedClientLink
               href="/"
-              className="txt-compact-xlarge-plus hover:text-ui-fg-base uppercase"
+              className="font-headline text-2xl tracking-tight hover:text-neon-green transition-colors"
               data-testid="nav-store-link"
             >
-              Le Marché Tricolore
+              LUDE KAPE
             </LocalizedClientLink>
           </div>
 
-          <div className="flex items-center gap-x-6 h-full flex-1 basis-0 justify-end">
-            <div className="hidden small:flex items-center gap-x-6 h-full">
+          {/* Desktop Navigation - Center */}
+          <div className="hidden small:flex items-center gap-x-8">
+            {navLinks.map((link) => (
               <LocalizedClientLink
-                className="hover:text-ui-fg-base"
-                href="/account"
-                data-testid="nav-account-link"
+                key={link.href}
+                href={link.href}
+                className="nav-link-hover text-[15.5px] uppercase tracking-wide text-grey-60 font-medium"
               >
-                Compte
+                {link.label}
               </LocalizedClientLink>
-            </div>
+            ))}
+          </div>
+
+          {/* Right side - Account & Cart */}
+          <div className="flex items-center gap-x-6">
+            <LocalizedClientLink
+              className="hidden small:block text-sm text-grey-50 hover:text-dark-bg transition-colors"
+              href="/account"
+              data-testid="nav-account-link"
+            >
+              Račun
+            </LocalizedClientLink>
             <Suspense
               fallback={
                 <LocalizedClientLink
-                  className="hover:text-ui-fg-base flex gap-2"
+                  className="text-sm text-grey-50 hover:text-dark-bg transition-colors"
                   href="/cart"
                   data-testid="nav-cart-link"
                 >
-                  Panier (0)
+                  Košarica (0)
                 </LocalizedClientLink>
               }
             >
               <CartButton />
             </Suspense>
+            {/* Mobile Menu */}
+            <div className="small:hidden">
+              <SideMenu regions={regions} />
+            </div>
           </div>
         </nav>
       </header>

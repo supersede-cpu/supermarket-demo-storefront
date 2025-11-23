@@ -82,10 +82,10 @@ const CartDropdown = ({
       <Popover className="relative h-full">
         <PopoverButton className="h-full">
           <LocalizedClientLink
-            className="hover:text-ui-fg-base"
+            className="hover:text-neon-green transition-colors"
             href="/cart"
             data-testid="nav-cart-link"
-          >{`Panier (${totalItems})`}</LocalizedClientLink>
+          >{`Košarica (${totalItems})`}</LocalizedClientLink>
         </PopoverButton>
         <Transition
           show={cartDropdownOpen}
@@ -99,11 +99,11 @@ const CartDropdown = ({
         >
           <PopoverPanel
             static
-            className="hidden small:block absolute top-[calc(100%+1px)] right-0 bg-white border-x border-b border-gray-200 w-[420px] text-ui-fg-base"
+            className="hidden small:block absolute top-[calc(100%+1px)] right-0 bg-dark-surface border border-dark-border w-[420px] text-white"
             data-testid="nav-cart-dropdown"
           >
             <div className="p-4 flex items-center justify-center">
-              <h3 className="text-large-semi">Panier</h3>
+              <h3 className="text-large-semi font-headline text-xl">Košarica</h3>
             </div>
             {cartState && cartState.items?.length ? (
               <>
@@ -151,7 +151,7 @@ const CartDropdown = ({
                                   data-testid="cart-item-quantity"
                                   data-value={item.quantity}
                                 >
-                                  Quantité : {item.quantity}
+                                  Količina: {item.quantity}
                                 </span>
                               </div>
                               <div className="flex justify-end">
@@ -168,20 +168,20 @@ const CartDropdown = ({
                             className="mt-1"
                             data-testid="cart-item-remove-button"
                           >
-                            Retirer
+                            Ukloni
                           </DeleteButton>
                         </div>
                       </div>
                     ))}
                 </div>
-                <div className="p-4 flex flex-col gap-y-4 text-small-regular">
+                <div className="p-4 flex flex-col gap-y-4 text-small-regular border-t border-dark-border">
                   <div className="flex items-center justify-between">
-                    <span className="text-ui-fg-base font-semibold">
-                      Sous-total{" "}
-                      <span className="font-normal">(hors taxes)</span>
+                    <span className="font-semibold">
+                      Međuzbroj{" "}
+                      <span className="font-normal text-grey-40">(bez poreza)</span>
                     </span>
                     <span
-                      className="text-large-semi"
+                      className="text-large-semi text-neon-green"
                       data-testid="cart-subtotal"
                       data-value={subtotal}
                     >
@@ -193,11 +193,11 @@ const CartDropdown = ({
                   </div>
                   <LocalizedClientLink href="/cart" passHref>
                     <Button
-                      className="w-full"
+                      className="w-full btn-neon-green"
                       size="large"
                       data-testid="go-to-cart-button"
                     >
-                      Voir le panier
+                      Pogledaj košaricu
                     </Button>
                   </LocalizedClientLink>
                 </div>
@@ -205,15 +205,15 @@ const CartDropdown = ({
             ) : (
               <div>
                 <div className="flex py-16 flex-col gap-y-4 items-center justify-center">
-                  <div className="bg-gray-900 text-small-regular flex items-center justify-center w-6 h-6 rounded-full text-white">
+                  <div className="bg-neon-green text-small-regular flex items-center justify-center w-6 h-6 rounded-full text-black font-bold">
                     <span>0</span>
                   </div>
-                  <span>Votre panier est vide.</span>
+                  <span>Tvoja košarica je prazna.</span>
                   <div>
                     <LocalizedClientLink href="/store">
                       <>
-                        <span className="sr-only">Aller à la page des produits</span>
-                        <Button onClick={close}>Découvrir les produits</Button>
+                        <span className="sr-only">Idi na stranicu proizvoda</span>
+                        <Button onClick={close} className="btn-neon-green">Istraži proizvode</Button>
                       </>
                     </LocalizedClientLink>
                   </div>

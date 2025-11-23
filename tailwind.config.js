@@ -21,15 +21,36 @@ module.exports = {
         padding: "padding-top padding-right padding-bottom padding-left",
       },
       colors: {
-        // French Tricolor Theme
-        tricolor: {
-          red: "#EF4444",      // Primary red
-          'red-dark': "#DC2626",
-          'red-light': "#FCA5A5",
-          white: "#FFFFFF",    // Base white
-          blue: "#3B82F6",     // Accent blue
-          'blue-dark': "#2563EB",
-          'blue-light': "#93C5FD",
+        // Lude Kape - Black/White base, Green primary, Yellow/Red severe accents
+        neon: {
+          green: "#39FF14",
+          'green-dark': "#2ED010",
+          'green-glow': "#39FF1440",
+          yellow: "#E6D300",
+          'yellow-bright': "#FFEA00",
+          'yellow-glow': "#E6D30040",
+          red: "#FF1744",
+          'red-dark': "#D50032",
+          'red-glow': "#FF174440",
+        },
+        // Legacy gold - kept for compatibility
+        gold: {
+          DEFAULT: "#C9A227",
+          light: "#D4AF37",
+          dark: "#B8860B",
+          muted: "#C9A22730",
+        },
+        light: {
+          bg: "#FFFFFF",
+          surface: "#FAFAFA",
+          card: "#F5F5F5",
+          border: "#E5E5E5",
+        },
+        dark: {
+          bg: "#0A0A0A",
+          surface: "#141414",
+          card: "#1A1A1A",
+          border: "#2A2A2A",
         },
         grey: {
           0: "#FFFFFF",
@@ -70,13 +91,17 @@ module.exports = {
       },
       fontFamily: {
         sans: [
-          "Inter",
+          "Outfit",
           "-apple-system",
           "BlinkMacSystemFont",
           "Segoe UI",
           "Roboto",
           "Helvetica Neue",
           "Ubuntu",
+          "sans-serif",
+        ],
+        display: [
+          "Outfit",
           "sans-serif",
         ],
       },

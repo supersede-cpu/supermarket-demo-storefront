@@ -1,6 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+
+/* Lude Kape - Light Theme Base */
+:root {
+  --neon-green: #39FF14;
+  --gold: #C9A227;
+  --gold-light: #D4AF37;
+  --light-bg: #FFFFFF;
+  --light-surface: #FAFAFA;
+  --dark-bg: #0A0A0A;
+  --font-headline: 'Outfit', sans-serif;
+  --font-body: 'Outfit', sans-serif;
+}
+
+html {
+  background-color: var(--light-bg);
+  color: #0A0A0A;
+}
+
+body {
+  background-color: var(--light-bg);
+  color: #0A0A0A;
+}
 
 @layer utilities {
   /* Chrome, Safari and Opera */
@@ -55,7 +79,225 @@
   }
 
   .contrast-btn {
-    @apply px-4 py-2 border border-black rounded-full hover:bg-black hover:text-white transition-colors duration-200 ease-in;
+    @apply px-4 py-2 border border-white rounded-full hover:bg-white hover:text-black transition-colors duration-200 ease-in;
+  }
+
+  /* Light Theme Button Styles */
+  .btn-neon-green {
+    @apply px-6 py-3 bg-neon-green text-black font-semibold tracking-wide rounded-sm;
+    @apply hover:bg-neon-green-dark transition-all duration-300;
+  }
+
+  .btn-gold {
+    @apply px-6 py-3 bg-gold text-white font-semibold tracking-wide rounded-sm;
+    @apply hover:bg-gold-dark transition-all duration-300;
+  }
+
+  .btn-outline-dark {
+    @apply px-6 py-3 border border-dark-bg/30 text-dark-bg font-medium tracking-wide rounded-sm;
+    @apply hover:border-dark-bg hover:bg-dark-bg hover:text-white transition-all duration-300;
+  }
+
+  .btn-outline-light {
+    @apply px-6 py-3 border border-white/50 text-white font-medium tracking-wide rounded-sm;
+    @apply hover:border-white hover:bg-white hover:text-dark-bg transition-all duration-300;
+  }
+
+  /* Subtle Text Glow - More Elegant */
+  .text-glow-orange {
+    text-shadow: 0 0 30px rgba(255, 122, 26, 0.3);
+  }
+
+  .text-glow-green {
+    text-shadow: 0 0 30px rgba(57, 255, 20, 0.3);
+  }
+
+  /* Subtle Border Glow */
+  .border-glow-orange {
+    box-shadow: 0 0 20px rgba(255, 122, 26, 0.15);
+  }
+
+  .border-glow-green {
+    box-shadow: 0 0 20px rgba(57, 255, 20, 0.15);
+  }
+
+  /* Headline font utility */
+  .font-headline {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  .font-body {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 400;
+  }
+
+  /* Party Button Styles */
+  .btn-party-green {
+    @apply px-7 py-2.5 font-semibold tracking-wide transition-all duration-300 relative overflow-hidden;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #39FF14 0%, #2ED010 100%);
+    border: 2px solid rgba(57, 255, 20, 0.4);
+    color: #000;
+  }
+  .btn-party-green::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+    transition: left 0.4s ease;
+  }
+  .btn-party-green:hover::before {
+    left: 100%;
+  }
+  .btn-party-green:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 25px rgba(57, 255, 20, 0.4);
+    border-color: rgba(57, 255, 20, 0.6);
+  }
+
+  .btn-party-gold {
+    @apply px-7 py-2.5 font-semibold tracking-wide transition-all duration-300;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #D4AF37 0%, #C9A227 100%);
+    border: 2px solid rgba(201, 162, 39, 0.4);
+    color: #000;
+  }
+  .btn-party-gold:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 25px rgba(201, 162, 39, 0.4);
+    background: linear-gradient(135deg, #E0BC3F 0%, #D4AF37 100%);
+  }
+
+  .btn-party-outline {
+    @apply px-7 py-2.5 font-semibold tracking-wide transition-all duration-300 relative overflow-hidden;
+    border-radius: 12px;
+    background: transparent;
+    border: 2px solid rgba(10, 10, 10, 0.3);
+    color: #0A0A0A;
+  }
+  .btn-party-outline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    transition: left 0.4s ease;
+  }
+  .btn-party-outline:hover::before {
+    left: 100%;
+  }
+  .btn-party-outline:hover {
+    transform: translateY(-2px);
+    border-color: #39FF14;
+    color: #2ED010;
+  }
+
+  .btn-party-outline-light {
+    @apply px-7 py-2.5 font-semibold tracking-wide transition-all duration-300 relative overflow-hidden;
+    border-radius: 12px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    color: #fff;
+  }
+  .btn-party-outline-light::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.4s ease;
+  }
+  .btn-party-outline-light:hover::before {
+    left: 100%;
+  }
+  .btn-party-outline-light:hover {
+    transform: translateY(-2px);
+    border-color: #39FF14;
+    color: #39FF14;
+  }
+
+  /* Urban Animations */
+  @keyframes float-up {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @keyframes fade-in-up {
+    0% { opacity: 0; transform: translateY(30px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes scale-in {
+    0% { opacity: 0; transform: scale(0.9); }
+    100% { opacity: 1; transform: scale(1); }
+  }
+
+  @keyframes slide-in-left {
+    0% { opacity: 0; transform: translateX(-50px); }
+    100% { opacity: 1; transform: translateX(0); }
+  }
+
+  @keyframes slide-in-right {
+    0% { opacity: 0; transform: translateX(50px); }
+    100% { opacity: 1; transform: translateX(0); }
+  }
+
+  .animate-float {
+    animation: float-up 4s ease-in-out infinite;
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up 0.8s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scale-in 0.6s ease-out forwards;
+  }
+
+  .animate-slide-left {
+    animation: slide-in-left 0.8s ease-out forwards;
+  }
+
+  .animate-slide-right {
+    animation: slide-in-right 0.8s ease-out forwards;
+  }
+
+  .animate-delay-100 { animation-delay: 0.1s; }
+  .animate-delay-200 { animation-delay: 0.2s; }
+  .animate-delay-300 { animation-delay: 0.3s; }
+  .animate-delay-400 { animation-delay: 0.4s; }
+  .animate-delay-500 { animation-delay: 0.5s; }
+
+  /* Nav Link Hover - Green with animated underline + drop */
+  .nav-link-hover {
+    position: relative;
+    transition: color 0.2s ease, transform 0.2s ease;
+  }
+  .nav-link-hover::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #39FF14;
+    transition: width 0.3s ease;
+  }
+  .nav-link-hover:hover {
+    color: #39FF14;
+    transform: translateY(2px) rotate(2deg);
+  }
+  .nav-link-hover:hover::after {
+    width: 100%;
   }
 
   .text-xsmall-regular {
